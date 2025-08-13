@@ -8,12 +8,132 @@ body {
     color: #333;
 }
 
+/* Hero auth */
+.auth-page {
+    background: radial-gradient(ellipse at top left, #8bb6ff 0%, #3d6bb3 45%, #0c3f88 100%);
+    min-height: 100vh;
+}
+
+.auth-hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 16px;
+    min-height: calc(100vh - 160px);
+}
+
+.glass-panel {
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #111;
+}
+
+.auth-icon {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 10px auto;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    color: #111;
+    background: rgba(255,255,255,0.9);
+    border: 1px solid rgba(0,0,0,0.15);
+}
+
+.auth-title {
+    text-align: center;
+    letter-spacing: 2px;
+    color: #e3edff;
+    font-weight: 600;
+    margin-bottom: 14px;
+}
+
+/* Inputs subrayados */
+.input-group.underline input {
+    border: none;
+    border-bottom: 2px solid rgba(0,0,0,0.5);
+    border-radius: 0;
+    background: transparent;
+    color: #111;
+    padding-left: 0;
+}
+
+.input-group.underline .icon {
+    background: transparent;
+    color: #111;
+}
+
+.input-group.underline input::placeholder {
+    color: #555;
+}
+
+.input-group.underline input:focus {
+    box-shadow: none;
+    border-bottom-color: #000;
+}
+
+/* Fila recordar/olvido */
+.auth-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #111;
+    font-size: 0.92em;
+}
+
+.auth-row .forgot { color: #111; text-decoration: none; opacity: 0.9; }
+.auth-row .forgot:hover { text-decoration: underline; opacity: 1; }
+
+.remember input { margin-right: 6px; }
+
+/* Botón principal */
+button.primary, .btn.primary {
+    width: 100%;
+    background: #144a9a;
+    color: #fff;
+}
+
+button.primary:hover, .btn.primary:hover {
+    background: #0f3e82;
+}
+
+/* Switch entre formularios */
+.auth-switch { color: #111; text-align: center; margin-top: 8px; }
+.auth-switch a { color: #111; }
+
+/* Accesibilidad: oculto visual para labels */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+
 header {
-    background-color: #4CAF50;
+    background-color: #144a9a;
     color: white;
     text-align: center;
     padding: 1em;
 }
+
+#user-status {
+    margin: 8px 0;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Ocultar por defecto, JS lo muestra si no hay sesión */
+#nav-auth { display: none; }
 
 nav ul {
     list-style-type: none;
@@ -41,51 +161,160 @@ nav ul li a:hover {
 
 main {
     padding: 20px;
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
 h1, h2, h3 {
-    color: #4CAF50;
+    color: #144a9a;
 }
 
 .form-container {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(300px, 1fr));
+    gap: 24px;
+    align-items: stretch;
+    justify-content: center;
+}
+
+/* Una sola columna centrada (login hero) */
+.form-container.one-col { grid-template-columns: minmax(300px, 460px); }
+
+/* Centrado horizontal general del bloque */
+section > .form-container { justify-items: center; }
+
+.auth-card {
+    width: 100%;
+    max-width: 460px;
+}
+
+.form-container h3 {
+    margin: 0 0 12px 0;
+    font-size: 1.2em;
+    color: #144a9a;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e3edff;
 }
 
 .form-container form {
-    width: 45%;
+    width: 100%;
     background-color: white;
     padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    border: 1px solid #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+/* El hero usa glass-panel así que no necesita hover */
+.form-container form:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.10);
+}
+
+@media (max-width: 900px) {
+    .form-container { grid-template-columns: 1fr; }
 }
 
 form label {
     display: block;
-    margin: 10px 0 5px;
+    margin: 4px 0 4px;
+    font-weight: 600;
+}
+
+.input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.icon {
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #e3edff;
+    color: #144a9a;
+    border-radius: 50%;
+    font-size: 14px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    opacity: 0.9;
+    color: #111;
+}
+
+.toggle-password:hover { opacity: 1; }
+
+.input-group input[type="password"],
+.input-group input[type="email"],
+.input-group input[type="text"] {
+    flex: 1;
 }
 
 form input {
     width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 12px;
+    margin-bottom: 4px;
+    border: 1px solid #cfcfcf;
+    border-radius: 8px;
+    background: #fff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-button {
-    background-color: #4CAF50;
+form input:focus {
+    outline: none;
+    border-color: #144a9a;
+    box-shadow: 0 0 0 3px rgba(20,74,154,0.15);
+}
+
+/* Estados de validación */
+input.is-valid {
+    border-color: #144a9a;
+    box-shadow: 0 0 0 3px rgba(20,74,154,0.12);
+}
+
+input.is-invalid {
+    border-color: #c62828;
+    box-shadow: 0 0 0 3px rgba(198,40,40,0.12);
+}
+
+.form-message {
+    margin-top: 6px;
+    font-size: 0.92em;
+    padding: 8px 10px;
+    border-radius: 6px;
+    background: #f7f7f7;
+    color: #111;
+}
+
+.form-message:empty { display: none; }
+
+button, .btn {
+    background-color: #144a9a;
     color: white;
-    padding: 10px 20px;
+    padding: 12px 20px;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: 600;
 }
 
-button:hover {
-    background-color: #45a049;
+button:hover, .btn:hover {
+    background-color: #0f3e82;
 }
 
 .calendario, .producto {
@@ -96,12 +325,74 @@ button:hover {
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
+/* Calendario mejorado */
+#calendar.cal-widget {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    border: 1px solid #f0f0f0;
+    max-width: 340px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+#calendar.cal-widget .cal-header {
+    background: #2f3e56;
+    color: #fff;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#calendar.cal-widget .cal-header .cal-title { font-weight: 600; letter-spacing: 1px; }
+
+.cal-nav-btn {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.cal-grid { padding: 12px; }
+.cal-weekdays { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; padding: 0 12px; color: #5b687e; font-weight: 600; }
+.cal-weekdays div { text-align: center; font-size: 12px; }
+
+.cal-week { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+
+.cal-cell {
+    padding: 10px 0;
+    border: none;
+    background: transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    color: #2b2b2b;
+}
+
+.cal-cell:hover { background: #eaf2ff; }
+
+.cal-cell.is-out { color: #b9b9b9; cursor: default; }
+.cal-cell.is-out:hover { background: transparent; }
+
+.cal-cell.is-today { outline: 2px solid #144a9a; }
+.cal-cell.is-selected { background: #00a8e8; color: #fff; }
+
+/* Slots */
+#time-slots { padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.slot-btn { background: #144a9a; color: #fff; border-radius: 20px; padding: 8px 12px; border: none; cursor: pointer; }
+.slot-btn:hover { background: #0f3e82; }
+
+#time-slots:empty { display: block; min-height: 24px; }
+
 footer {
     background-color: #0f0f0f;
     color: white;
     text-align: center;
     padding: 10px;
-    position: fixed;
+    /* Cambiado de fixed a estático para evitar superposiciones */
+    position: static;
     bottom: 0;
     width: 100%;
 }
