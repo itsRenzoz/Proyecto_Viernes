@@ -1,11 +1,26 @@
+:root {
+    --color-primary: #144a9a; /* Azul principal */
+    --color-primary-dark: #0f3e82; /* Azul oscuro para hover */
+    --color-secondary: #00a8e8; /* Azul claro para acentos y seleccionados */
+    --color-success: #2e7d32; /* Verde para mensajes OK */
+    --color-error: #c62828; /* Rojo para mensajes de error */
+    --color-text: #333; /* Texto general */
+    --color-text-light: #555; /* Texto secundario */
+    --color-bg-light: #f7f7f7; /* Fondo de elementos claros */
+    --color-bg-body: #e0dddd; /* Fondo del body */
+    --color-border: #cfcfcf; /* Borde general */
+    --color-border-light: #f0f0f0; /* Borde ligero */
 
+    --font-family-body: 'Roboto', Arial, sans-serif; /* Fuente principal */
+    --font-family-heading: 'Montserrat', sans-serif; /* Fuente para títulos */
+}
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: var(--font-family-body);
     margin: 0;
     padding: 0;
-    background-color: #e0dddd;
-    color: #333;
+    background-color: var(--color-bg-body);
+    color: var(--color-text);
 }
 
 /* Hero auth */
@@ -93,12 +108,12 @@ body {
 /* Botón principal */
 button.primary, .btn.primary {
     width: 100%;
-    background: #144a9a;
-    color: #fff;
+    background: var(--color-primary);
+    color: white;
 }
 
 button.primary:hover, .btn.primary:hover {
-    background: #0f3e82;
+    background: var(--color-primary-dark);
 }
 
 /* Switch entre formularios */
@@ -118,10 +133,15 @@ button.primary:hover, .btn.primary:hover {
 }
 
 header {
-    background-color: #144a9a;
+    background-color: var(--color-primary);
     color: white;
     text-align: center;
     padding: 1em;
+}
+
+h1, h2, h3 {
+    color: var(--color-primary);
+    font-family: var(--font-family-heading);
 }
 
 #user-status {
@@ -165,10 +185,6 @@ main {
     margin: 0 auto;
 }
 
-h1, h2, h3 {
-    color: #144a9a;
-}
-
 .form-container {
     display: grid;
     grid-template-columns: repeat(2, minmax(300px, 1fr));
@@ -191,9 +207,9 @@ section > .form-container { justify-items: center; }
 .form-container h3 {
     margin: 0 0 12px 0;
     font-size: 1.2em;
-    color: #144a9a;
+    color: var(--color-primary);
     padding-bottom: 8px;
-    border-bottom: 2px solid #e3edff;
+    border-bottom: 2px solid var(--color-bg-light);
 }
 
 .form-container form {
@@ -202,7 +218,7 @@ section > .form-container { justify-items: center; }
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    border: 1px solid #f0f0f0;
+    border: 1px solid var(--color-border-light);
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -238,8 +254,8 @@ form label {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: #e3edff;
-    color: #144a9a;
+    background: var(--color-bg-light);
+    color: var(--color-primary);
     border-radius: 50%;
     font-size: 14px;
 }
@@ -252,7 +268,7 @@ form label {
     cursor: pointer;
     font-size: 16px;
     opacity: 0.9;
-    color: #111;
+    color: var(--color-text);
 }
 
 .toggle-password:hover { opacity: 1; }
@@ -267,7 +283,7 @@ form input {
     width: 100%;
     padding: 12px;
     margin-bottom: 4px;
-    border: 1px solid #cfcfcf;
+    border: 1px solid var(--color-border);
     border-radius: 8px;
     background: #fff;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -275,18 +291,18 @@ form input {
 
 form input:focus {
     outline: none;
-    border-color: #144a9a;
+    border-color: var(--color-primary);
     box-shadow: 0 0 0 3px rgba(20,74,154,0.15);
 }
 
 /* Estados de validación */
 input.is-valid {
-    border-color: #144a9a;
-    box-shadow: 0 0 0 3px rgba(20,74,154,0.12);
+    border-color: var(--color-success);
+    box-shadow: 0 0 0 3px rgba(46,125,50,0.12);
 }
 
 input.is-invalid {
-    border-color: #c62828;
+    border-color: var(--color-error);
     box-shadow: 0 0 0 3px rgba(198,40,40,0.12);
 }
 
@@ -295,14 +311,14 @@ input.is-invalid {
     font-size: 0.92em;
     padding: 8px 10px;
     border-radius: 6px;
-    background: #f7f7f7;
-    color: #111;
+    background: var(--color-bg-light);
+    color: var(--color-text);
 }
 
 .form-message:empty { display: none; }
 
 button, .btn {
-    background-color: #144a9a;
+    background-color: var(--color-primary);
     color: white;
     padding: 12px 20px;
     border: none;
@@ -314,7 +330,7 @@ button, .btn {
 }
 
 button:hover, .btn:hover {
-    background-color: #0f3e82;
+    background-color: var(--color-primary-dark);
 }
 
 .calendario, .producto {
@@ -330,14 +346,14 @@ button:hover, .btn:hover {
     background: #fff;
     border-radius: 10px;
     box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    border: 1px solid #f0f0f0;
+    border: 1px solid var(--color-border-light);
     max-width: 340px;
     margin: 0 auto;
     overflow: hidden;
 }
 
 #calendar.cal-widget .cal-header {
-    background: #2f3e56;
+    background: var(--color-primary);
     color: #fff;
     padding: 10px 12px;
     display: flex;
@@ -356,7 +372,7 @@ button:hover, .btn:hover {
 }
 
 .cal-grid { padding: 12px; }
-.cal-weekdays { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; padding: 0 12px; color: #5b687e; font-weight: 600; }
+.cal-weekdays { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; padding: 0 12px; color: var(--color-text-light); font-weight: 600; }
 .cal-weekdays div { text-align: center; font-size: 12px; }
 
 .cal-week { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
@@ -368,21 +384,29 @@ button:hover, .btn:hover {
     border-radius: 6px;
     cursor: pointer;
     text-align: center;
-    color: #2b2b2b;
+    color: var(--color-text);
 }
 
-.cal-cell:hover { background: #eaf2ff; }
+.cal-cell:hover { background: var(--color-bg-light); }
 
 .cal-cell.is-out { color: #b9b9b9; cursor: default; }
 .cal-cell.is-out:hover { background: transparent; }
 
-.cal-cell.is-today { outline: 2px solid #144a9a; }
-.cal-cell.is-selected { background: #00a8e8; color: #fff; }
+.cal-cell.is-today { outline: 2px solid var(--color-primary); }
+.cal-cell.is-selected { background: var(--color-secondary); color: #fff; }
 
 /* Slots */
 #time-slots { padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
-.slot-btn { background: #144a9a; color: #fff; border-radius: 20px; padding: 8px 12px; border: none; cursor: pointer; }
-.slot-btn:hover { background: #0f3e82; }
+.slot-btn {
+    background: var(--color-primary);
+    color: #fff;
+    border-radius: 20px;
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+}
+
+.slot-btn:hover { background: var(--color-primary-dark); }
 
 #time-slots:empty { display: block; min-height: 24px; }
 

@@ -5,6 +5,7 @@
 	<title>Gestión de Citas Veterinaria - Sobre la Clínica</title>
 	<link rel="stylesheet" href="css/estilos.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 	<header>
@@ -27,9 +28,9 @@
 			<p>Información sobre la clínica veterinaria, horarios y servicios.</p>
 			<div id="info-contenido">
 				<ul>
-					<li>Horario: Lunes a Viernes, 8:00 AM - 6:00 PM</li>
-					<li>Teléfono: +506 1234-5678</li>
-					<li>Dirección: San José, Costa Rica</li>
+					<li>Horario: ${info?.horarios || ''}</li>
+					<li>Teléfono: ${info?.telefono || ''}</li>
+					<li>Dirección: ${info?.direccion || ''}</li>
 				</ul>
 			</div>
 		</section>
