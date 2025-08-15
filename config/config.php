@@ -1,6 +1,7 @@
 <?php
 // Configuración de entorno y constantes
 // Se pueden sobrescribir con variables de entorno en XAMPP si se desea
+// Se debe de cambiar la información de la configuración en caso de que no sea la misma en el localhost especifico
 
 define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
 define('DB_PORT', getenv('DB_PORT') ?: '3308');
