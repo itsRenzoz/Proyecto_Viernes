@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
-	<title>Gestión de Citas Veterinarias - Tienda</title>
+	<title>Gestión de Citas Veterinaria - Sobre la Clínica</title>
 	<link rel="stylesheet" href="css/estilos.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
@@ -18,16 +18,20 @@
 				<li><a href="reservas.html">Reservar Cita</a></li>
 				<li><a href="tienda.html">Tienda</a></li>
 				<li><a href="info-clinica.html">Sobre la Clínica</a></li>
-				<li><a href="carrito.html">Carrito de Reservas</a></li>
+                <li><a href="carrito.html">Carrito de Reservas</a></li>
 				<li id="nav-admin" style="display:none"><a href="admin.html">Panel Admin</a></li>
 			</ul>
 		</nav>
 	</header>
 	<main>
 		<section>
-			<h2>Tienda de Accesorios y Alimentos</h2>
-			<p>Encuentra todo lo que necesitas para tu mascota.</p>
-			<div id="products"></div>
+			<h2>Reservas realizadas</h2>
+			<p>Información sobre las reservas realizadas de los productos disponibles.</p>
+			<div id="reserva-producto">
+				<li>Nombre del producto: ${producto?.nombre || ''}</li>
+		        <li>Descripcion: ${producto?.descripcion || ''}</li>
+		        <li>Precio: ${descripcion?.precio || ''}</li>
+			</div>
 		</section>
 	</main>
 	<footer>

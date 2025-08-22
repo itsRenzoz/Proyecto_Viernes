@@ -89,11 +89,11 @@ CREATE TABLE IF NOT EXISTS pedido_items (
 ) ENGINE=InnoDB;
 
 -- Datos de ejemplo de productos (precios aproximados CRC)
-INSERT INTO productos (nombre, descripcion, precio, stock, imagen_url, activo) VALUES
+INSERT INTO productos (nombre, descripcion, precio, stock, imagen_url, activo, reservado) VALUES
 	('Collar para perro', 'Collar resistente y ajustable.', 6900.00, 25, NULL, 1),
-	('Alimento Premium 10kg', 'Alimento balanceado de alta calidad.', 28500.00, 15, NULL, 1),
-	('Juguete interactivo', 'Reduce el estrés y promueve el juego.', 5500.00, 40, NULL, 1),
-	('Camita acolchada', 'Camita lavable tamaño mediano.', 39900.00, 10, NULL, 1),
-	('Shampoo hipoalergénico', 'Para piel sensible, 500ml.', 7200.00, 30, NULL, 1),
+	('Alimento Premium 10kg', 'Alimento balanceado de alta calidad.', 28500.00, 15, NULL, 1)
+	('Juguete interactivo', 'Reduce el estrés y promueve el juego.', 5500.00, 40, NULL, 1)
+	('Camita acolchada', 'Camita lavable tamaño mediano.', 39900.00, 10, NULL, 1) 
+	('Shampoo hipoalergénico', 'Para piel sensible, 500ml.', 7200.00, 30, NULL, 1) 
 	('Arena para gato 10kg', 'Control de olores prolongado.', 13500.00, 20, NULL, 1)
 ON DUPLICATE KEY UPDATE id=id; 

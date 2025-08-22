@@ -308,14 +308,28 @@ async function initTienda() {
 		cont.innerHTML = '';
 		productos.forEach(p => {
 			const card = document.createElement('div'); card.className = 'producto';
-			card.innerHTML = `<h3>${p.nombre}</h3><p>${p.descripcion || ''}</p><p><strong>${formatCRC(p.precio)}</strong></p><p>Stock: ${p.stock}</p><button data-id="${p.id}">Comprar</button>`;
-			card.querySelector('button').addEventListener('click', () => checkout([{ producto_id: p.id, cantidad: 1 }]));
+			card.innerHTML = `<h3>${p.nombre}</h3><p>${p.descripcion || ''}</p><p><strong>${formatCRC(p.precio)}</strong></p><p>Stock: ${p.stock}</p><button data-id="${p.id}">Reservar</button>`;
+			card.querySelector('button').addEventListener('click', () => {agregarAlCarrito(p);
+			});
 			cont.appendChild(card);
 		});
 	} catch (err) {
 		cont.textContent = 'No se pudieron cargar los productos.';
 	}
 }
+
+//funcion para agregar los productos al carrito
+function agregarAlCarrito(producto) {
+	const el = qs('#reserva-producto');
+	el.innerHTML = '';
+	const ul = document.createElement('ul');
+	ul.innerHTML = `
+		<li>Nombre del producto: ${producto?.nombre || ''}</li>
+		<li>Descripcion: ${producto?.descripcion || ''}</li>
+		<li>Precio: ${descripcion?.precio || ''}</li>
+	`;
+}
+
 
 async function checkout(items) {
 	try {
