@@ -133,6 +133,11 @@ button.primary:hover, .btn.primary:hover {
 }
 
 header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
     background-color: var(--color-primary);
     color: white;
     text-align: center;
