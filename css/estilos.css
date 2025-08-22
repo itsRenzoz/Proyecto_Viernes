@@ -1,26 +1,42 @@
 :root {
-    --color-primary: #144a9a; /* Azul principal */
-    --color-primary-dark: #0f3e82; /* Azul oscuro para hover */
-    --color-secondary: #00a8e8; /* Azul claro para acentos y seleccionados */
-    --color-success: #2e7d32; /* Verde para mensajes OK */
-    --color-error: #c62828; /* Rojo para mensajes de error */
-    --color-text: #333; /* Texto general */
-    --color-text-light: #555; /* Texto secundario */
-    --color-bg-light: #f7f7f7; /* Fondo de elementos claros */
-    --color-bg-body: #e0dddd; /* Fondo del body */
-    --color-border: #cfcfcf; /* Borde general */
-    --color-border-light: #f0f0f0; /* Borde ligero */
-
-    --font-family-body: 'Roboto', Arial, sans-serif; /* Fuente principal */
-    --font-family-heading: 'Montserrat', sans-serif; /* Fuente para títulos */
+    --color-primary: #144a9a;
+    /* Azul principal */
+    --color-primary-dark: #0f3e82;
+    /* Azul oscuro para hover */
+    --color-secondary: #00a8e8;
+    /* Azul claro para acentos y seleccionados */
+    --color-success: #2e7d32;
+    /* Verde para mensajes OK */
+    --color-error: #c62828;
+    /* Rojo para mensajes de error */
+    --color-text: #333;
+    /* Texto general */
+    --color-text-light: #555;
+    /* Texto secundario */
+    --color-bg-light: #f7f7f7;
+    /* Fondo de elementos claros */
+    --color-bg-body: #e0dddd;
+    /* Fondo del body */
+    --color-border: #cfcfcf;
+    /* Borde general */
+    --color-border-light: #f0f0f0;
+    /* Borde ligero */
+    --font-family-body: 'Roboto', Arial, sans-serif;
+    /* Fuente principal */
+    --font-family-heading: 'Montserrat', sans-serif;
+    /* Fuente para títulos */
 }
 
+html,
 body {
-    font-family: var(--font-family-body);
+    height: 100%;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
     background-color: var(--color-bg-body);
     color: var(--color-text);
+    font-family: var(--font-family-body);
 }
 
 /* Hero auth */
@@ -38,10 +54,10 @@ body {
 }
 
 .glass-panel {
-    background: rgba(255,255,255,0.12);
+    background: rgba(255, 255, 255, 0.12);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
-    border: 1px solid rgba(255,255,255,0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     color: #111;
 }
 
@@ -55,8 +71,8 @@ body {
     justify-content: center;
     font-size: 36px;
     color: #111;
-    background: rgba(255,255,255,0.9);
-    border: 1px solid rgba(0,0,0,0.15);
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.15);
 }
 
 .auth-title {
@@ -70,7 +86,7 @@ body {
 /* Inputs subrayados */
 .input-group.underline input {
     border: none;
-    border-bottom: 2px solid rgba(0,0,0,0.5);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.5);
     border-radius: 0;
     background: transparent;
     color: #111;
@@ -100,25 +116,44 @@ body {
     font-size: 0.92em;
 }
 
-.auth-row .forgot { color: #111; text-decoration: none; opacity: 0.9; }
-.auth-row .forgot:hover { text-decoration: underline; opacity: 1; }
+.auth-row .forgot {
+    color: #111;
+    text-decoration: none;
+    opacity: 0.9;
+}
 
-.remember input { margin-right: 6px; }
+.auth-row .forgot:hover {
+    text-decoration: underline;
+    opacity: 1;
+}
+
+.remember input {
+    margin-right: 6px;
+}
 
 /* Botón principal */
-button.primary, .btn.primary {
+button.primary,
+.btn.primary {
     width: 100%;
     background: var(--color-primary);
     color: white;
 }
 
-button.primary:hover, .btn.primary:hover {
+button.primary:hover,
+.btn.primary:hover {
     background: var(--color-primary-dark);
 }
 
 /* Switch entre formularios */
-.auth-switch { color: #111; text-align: center; margin-top: 8px; }
-.auth-switch a { color: #111; }
+.auth-switch {
+    color: #111;
+    text-align: center;
+    margin-top: 8px;
+}
+
+.auth-switch a {
+    color: #111;
+}
 
 /* Accesibilidad: oculto visual para labels */
 .sr-only {
@@ -128,7 +163,7 @@ button.primary:hover, .btn.primary:hover {
     padding: 0;
     margin: -1px;
     overflow: hidden;
-    clip: rect(0,0,0,0);
+    clip: rect(0, 0, 0, 0);
     border: 0;
 }
 
@@ -138,13 +173,29 @@ header {
     left: 0;
     width: 100%;
     z-index: 1000;
-    background-color: var(--color-primary);
+    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
     color: white;
-    text-align: center;
-    padding: 1em;
+    padding: 0.8em 2em;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
-h1, h2, h3 {
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo img {
+    height: 48px;
+    width: auto;
+    display: block;
+}
+
+h1,
+h2,
+h3 {
     color: var(--color-primary);
     font-family: var(--font-family-heading);
 }
@@ -158,36 +209,41 @@ h1, h2, h3 {
 }
 
 /* Ocultar por defecto, JS lo muestra si no hay sesión */
-#nav-auth { display: none; }
-
-nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    background-color: #333;
-    overflow: hidden;
+#nav-auth {
+    display: none;
 }
 
-nav ul li {
-    display: inline;
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5em;
+    margin: 0;
+    padding: 0;
 }
 
 nav ul li a {
-    display: inline-block;
     color: white;
-    text-align: center;
-    padding: 14px 16px;
+    font-weight: 600;
     text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease-in-out;
 }
 
 nav ul li a:hover {
-    background-color: #111;
+    background: rgba(255, 255, 255, 0.18);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
 }
 
 main {
-    padding: 20px;
+    flex: 1;
+    padding: 100px 20px 20px;
     max-width: 1000px;
     margin: 0 auto;
+    width: 100%;
 }
 
 .form-container {
@@ -199,10 +255,14 @@ main {
 }
 
 /* Una sola columna centrada (login hero) */
-.form-container.one-col { grid-template-columns: minmax(300px, 460px); }
+.form-container.one-col {
+    grid-template-columns: minmax(300px, 460px);
+}
 
 /* Centrado horizontal general del bloque */
-section > .form-container { justify-items: center; }
+section>.form-container {
+    justify-items: center;
+}
 
 .auth-card {
     width: 100%;
@@ -222,7 +282,7 @@ section > .form-container { justify-items: center; }
     background-color: white;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
     border: 1px solid var(--color-border-light);
     display: flex;
     flex-direction: column;
@@ -233,11 +293,13 @@ section > .form-container { justify-items: center; }
 /* El hero usa glass-panel así que no necesita hover */
 .form-container form:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 24px rgba(0,0,0,0.10);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.10);
 }
 
 @media (max-width: 900px) {
-    .form-container { grid-template-columns: 1fr; }
+    .form-container {
+        grid-template-columns: 1fr;
+    }
 }
 
 form label {
@@ -276,7 +338,9 @@ form label {
     color: var(--color-text);
 }
 
-.toggle-password:hover { opacity: 1; }
+.toggle-password:hover {
+    opacity: 1;
+}
 
 .input-group input[type="password"],
 .input-group input[type="email"],
@@ -297,18 +361,18 @@ form input {
 form input:focus {
     outline: none;
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(20,74,154,0.15);
+    box-shadow: 0 0 0 3px rgba(20, 74, 154, 0.15);
 }
 
 /* Estados de validación */
 input.is-valid {
     border-color: var(--color-success);
-    box-shadow: 0 0 0 3px rgba(46,125,50,0.12);
+    box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.12);
 }
 
 input.is-invalid {
     border-color: var(--color-error);
-    box-shadow: 0 0 0 3px rgba(198,40,40,0.12);
+    box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.12);
 }
 
 .form-message {
@@ -320,9 +384,12 @@ input.is-invalid {
     color: var(--color-text);
 }
 
-.form-message:empty { display: none; }
+.form-message:empty {
+    display: none;
+}
 
-button, .btn {
+button,
+.btn {
     background-color: var(--color-primary);
     color: white;
     padding: 12px 20px;
@@ -334,23 +401,25 @@ button, .btn {
     font-weight: 600;
 }
 
-button:hover, .btn:hover {
+button:hover,
+.btn:hover {
     background-color: var(--color-primary-dark);
 }
 
-.calendario, .producto {
+.calendario,
+.producto {
     background-color: white;
     padding: 20px;
     margin-top: 20px;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Calendario mejorado */
 #calendar.cal-widget {
     background: #fff;
     border-radius: 10px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
     border: 1px solid var(--color-border-light);
     max-width: 340px;
     margin: 0 auto;
@@ -366,7 +435,10 @@ button:hover, .btn:hover {
     justify-content: space-between;
 }
 
-#calendar.cal-widget .cal-header .cal-title { font-weight: 600; letter-spacing: 1px; }
+#calendar.cal-widget .cal-header .cal-title {
+    font-weight: 600;
+    letter-spacing: 1px;
+}
 
 .cal-nav-btn {
     background: transparent;
@@ -376,11 +448,29 @@ button:hover, .btn:hover {
     cursor: pointer;
 }
 
-.cal-grid { padding: 12px; }
-.cal-weekdays { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; padding: 0 12px; color: var(--color-text-light); font-weight: 600; }
-.cal-weekdays div { text-align: center; font-size: 12px; }
+.cal-grid {
+    padding: 12px;
+}
 
-.cal-week { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+.cal-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+    padding: 0 12px;
+    color: var(--color-text-light);
+    font-weight: 600;
+}
+
+.cal-weekdays div {
+    text-align: center;
+    font-size: 12px;
+}
+
+.cal-week {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+}
 
 .cal-cell {
     padding: 10px 0;
@@ -392,16 +482,36 @@ button:hover, .btn:hover {
     color: var(--color-text);
 }
 
-.cal-cell:hover { background: var(--color-bg-light); }
+.cal-cell:hover {
+    background: var(--color-bg-light);
+}
 
-.cal-cell.is-out { color: #b9b9b9; cursor: default; }
-.cal-cell.is-out:hover { background: transparent; }
+.cal-cell.is-out {
+    color: #b9b9b9;
+    cursor: default;
+}
 
-.cal-cell.is-today { outline: 2px solid var(--color-primary); }
-.cal-cell.is-selected { background: var(--color-secondary); color: #fff; }
+.cal-cell.is-out:hover {
+    background: transparent;
+}
+
+.cal-cell.is-today {
+    outline: 2px solid var(--color-primary);
+}
+
+.cal-cell.is-selected {
+    background: var(--color-secondary);
+    color: #fff;
+}
 
 /* Slots */
-#time-slots { padding: 8px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+#time-slots {
+    padding: 8px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
 .slot-btn {
     background: var(--color-primary);
     color: #fff;
@@ -411,17 +521,296 @@ button:hover, .btn:hover {
     cursor: pointer;
 }
 
-.slot-btn:hover { background: var(--color-primary-dark); }
+.slot-btn:hover {
+    background: var(--color-primary-dark);
+}
 
-#time-slots:empty { display: block; min-height: 24px; }
+#time-slots:empty {
+    display: block;
+    min-height: 24px;
+}
+
+/* INFO CLÍNICA */
+.info-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.info-header h2 {
+    font-size: 2rem;
+    margin-bottom: 12px;
+}
+
+.info-header .subtitulo {
+    color: var(--color-text-light);
+    font-size: 1.1rem;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 30px;
+}
+
+.card {
+    background: #fff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--color-border-light);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.card i {
+    font-size: 2rem;
+    color: var(--color-secondary);
+    margin-bottom: 12px;
+    display: block;
+}
+
+.card h3 {
+    font-size: 1.25rem;
+    color: var(--color-primary);
+    margin-bottom: 10px;
+}
+
+.card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.card ul li {
+    font-size: 0.95rem;
+    padding: 6px 0;
+    color: var(--color-text);
+}
+
+.tienda {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+.producto-card {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 1rem 0;
+    padding: 1rem;
+    gap: 1.5rem;
+    transition: transform 0.2s ease;
+}
+
+.producto-card:hover {
+    transform: translateY(-5px);
+}
+
+.producto-card img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    border-radius: 8px;
+    background: #f8f8f8;
+    padding: 10px;
+}
+
+.producto-info {
+    flex: 1;
+}
+
+.producto-info h3 {
+    font-size: 1.3rem;
+    color: #1a4c96;
+    margin-bottom: 0.5rem;
+}
+
+.producto-info p {
+    margin: 0.3rem 0;
+    color: #444;
+}
+
+.precio {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #222;
+}
+
+.stock {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.btn-comprar {
+    margin-top: 0.5rem;
+    padding: 0.5rem 1.2rem;
+    background: #1a4c96;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-comprar:hover {
+    background: #163d7a;
+}
+
+.user-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#logout-btn {
+  background: white;
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease;
+}
+
+#logout-btn i {
+  color: #0b3d91; 
+  font-size: 18px;
+}
+
+#logout-btn:hover {
+  transform: scale(1.1);
+  background: #f0f0f0;
+}
+
 
 footer {
     background-color: #0f0f0f;
     color: white;
     text-align: center;
     padding: 10px;
-    /* Cambiado de fixed a estático para evitar superposiciones */
-    position: static;
-    bottom: 0;
     width: 100%;
+    margin-top: auto;
+}
+
+/* Ocultar botón de "Inicio" SOLO en la página index */
+body.index nav ul li:first-child {
+    display: none !important;
+}
+
+body.login-page nav ul {
+    justify-content: center;
+}
+
+/* BOTÓN LOGIN ICONO */
+.login-btn a {
+    color: white;
+    font-size: 28px;
+    border-radius: 50%;
+    padding: 6px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+}
+
+.login-btn a:hover {
+    color: var(--color-success);
+    background: rgba(255, 255, 255, 0.15);
+    transform: scale(1.1);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* HERO PRINCIPAL (Index) */
+.hero-intro {
+    background: var(--color-bg-body);
+    text-align: center;
+    padding: 120px 20px 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-content {
+    max-width: 800px;
+    animation: fadeInUp 1.2s ease-in-out;
+}
+
+.hero-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 24px;
+    white-space: nowrap;
+    font-family: var(--font-family-heading);
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    color: var(--color-text-light);
+    line-height: 1.8;
+    margin-bottom: 42px;
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-hero {
+    margin-top: 10px;
+    display: inline-block;
+    background: var(--color-primary);
+    color: #fff;
+    padding: 16px 36px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1.15rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+}
+
+.btn-hero:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+
+/*Animaciones Hero*/
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-40px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }

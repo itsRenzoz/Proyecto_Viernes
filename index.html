@@ -6,33 +6,58 @@
     <link rel="stylesheet" href="css/estilos.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 </head>
-<body>
-    <header>
-        <h1>Bienvenidos a VetAgenda</h1>
-        <div id="user-status"></div>
-        <!-- Pestaña de navegación de la página principal -->
-        <nav>
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li id="nav-auth"><a href="login.html">Iniciar Sesión/Registrarse</a></li>
-                <li><a href="reservas.html">Reservar Cita</a></li>
-                <li><a href="tienda.html">Tienda</a></li>
-                <li><a href="info-clinica.html">Sobre la Clínica</a></li>
-                <li id="nav-admin" style="display:none"><a href="admin.html">Panel Admin</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section>
-            <h2>Sistema de Gestión de Citas para Clínicas Veterinarias</h2>
-            <p>Optimiza la gestión de citas para tu clínica veterinaria con nuestra aplicación web. Reserva citas en línea, consulta disponibilidad y compra accesorios para tus mascotas.</p>
-            <a class="btn" href="reservas.html">Reservar Ahora</a>
-        </section>
-    </main>
+<body class="index"> 
+ <header>
+  <div class="header-container">
+
+    <div class="logo">
+      <img src="img/logo.png" alt="VetAgenda Logo">
+    </div>
+
+
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="tienda.html">Tienda</a></li>
+        <li><a href="info-clinica.html">Sobre la Clínica</a></li>
+        <li id="nav-admin" style="display:none"><a href="admin.html">Panel Admin</a></li>
+      </ul>
+    </nav>
+
+
+    <div class="login-btn">
+      <a href="login.html" title="Iniciar Sesión">
+        <i class="fas fa-user-circle"></i>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+    <section class="hero-intro">
+        <div class="hero-content">
+            <h1 class="hero-title">Gestión de Citas para Clínicas Veterinarias</h1>
+            <p class="hero-subtitle">
+                Organiza fácilmente tu clínica con nuestra plataforma digital.
+                Reserva citas en línea, consulta la disponibilidad en tiempo real
+                y ofrece a tus clientes la opción de adquirir productos para sus mascotas.
+                <strong>Optimiza tu tiempo y mejora la experiencia de tus pacientes peludos 🐾.</strong>
+            </p>
+
+           
+        </div>
+    </section>
+
+</main>
+    
     <footer>
         <p>&copy; 2025 VetAgenda. Todos los derechos reservados.</p>
     </footer>
     <script src="js/app.js"></script>
 </body>
 </html>
+
+

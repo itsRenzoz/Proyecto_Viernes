@@ -352,6 +352,32 @@ async function initInfoClinica() {
 	}
 }
 
+
+function attachPasswordToggles() {
+  document.querySelectorAll(".toggle-password").forEach(button => {
+    button.addEventListener("click", () => {
+      const targetId = button.getAttribute("data-target");
+      const input = document.getElementById(targetId);
+      const icon = button.querySelector("i");
+
+      if (input.type === "password") {
+        input.type = "text";
+        icon.classList.remove("fa-eye");
+        icon.classList.add("fa-eye-slash");
+      } else {
+        input.type = "password";
+        icon.classList.remove("fa-eye-slash");
+        icon.classList.add("fa-eye");
+      }
+    });
+  });
+}
+
+
+document.addEventListener("DOMContentLoaded", attachPasswordToggles);
+
+
+
 // Inicialización
 window.addEventListener('DOMContentLoaded', async () => {
 	const user = await renderUserStatus();
@@ -362,4 +388,37 @@ window.addEventListener('DOMContentLoaded', async () => {
 	initInfoClinica();
 	attachPasswordToggles();
 	attachAuthSwitch();
-}); 
+
+	fetch("partials/header.html")
+		.then(res => res.text())
+		.then(data => {
+			document.getElementById("header").innerHTML = data;
+
+		
+			const path = window.location.pathname.toLowerCase();
+
+			const esPublica = 
+				path.endsWith("/") || 
+				path.endsWith("index.html") || 
+				path.includes("tienda.html") || 
+				path.includes("info-clinica.html") || 
+				path.includes("login.html");
+
+			if (esPublica) {
+				requestAnimationFrame(() => {
+			
+					const reservarBtn = document.querySelector("nav ul li a[href='reservas.html']"); 
+					if (reservarBtn) reservarBtn.parentElement.style.display = "none";
+
+					if (path.includes("login.html")) {
+						const nav = document.querySelector("nav ul"); 
+						if (nav) nav.style.justifyContent = "center";
+
+						const loginBtn = document.querySelector(".login-btn");
+						if (loginBtn) loginBtn.style.display = "none";
+					}
+				});
+			}
+		});
+
+});
