@@ -6,22 +6,37 @@
 	<link rel="stylesheet" href="css/estilos.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 	<header>
-		<h1>VetAgenda</h1>
-		<div id="user-status"></div>
-		<nav aria-label="Principal">
-			<ul>
-				<li><a href="index.html">Inicio</a></li>
-				<li id="nav-auth"><a href="login.html">Iniciar Sesión/Registrarse</a></li>
-				<li><a href="reservas.html">Reservar Cita</a></li>
-				<li><a href="tienda.html">Tienda</a></li>
-				<li><a href="info-clinica.html">Sobre la Clínica</a></li>
-				<li id="nav-admin" style="display:none"><a href="admin.html">Panel Admin</a></li>
-			</ul>
-		</nav>
-	</header>
+  <div class="header-container">
+
+    <div class="logo">
+      <img src="img/logo.png" alt="VetAgenda Logo">
+    </div>
+
+    <nav aria-label="Principal">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="reservas.html">Reservar Cita</a></li>
+        <li><a href="tienda.html">Tienda</a></li>
+        <li><a href="info-clinica.html">Sobre la Clínica</a></li>
+        <li id="nav-admin" style="display:none"><a href="admin.html">Panel Admin</a></li>
+      </ul>
+    </nav>
+
+    <div class="user-actions">
+      <span id="user-status"></span>
+      <button id="logout-btn" title="Cerrar Sesión" style="display:none;">
+        <i class="fas fa-right-from-bracket"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+
+
 	<main>
 		<section>
 			<h2>Reservar una Cita</h2>
