@@ -308,8 +308,11 @@ async function initTienda() {
 		cont.innerHTML = '';
 		productos.forEach(p => {
 			const card = document.createElement('div'); card.className = 'producto';
-			card.innerHTML = `<h3>${p.nombre}</h3><p>${p.descripcion || ''}</p><p><strong>${formatCRC(p.precio)}</strong></p><p>Stock: ${p.stock}</p><button data-id="${p.id}">Comprar</button>`;
-			card.querySelector('button').addEventListener('click', () => checkout([{ producto_id: p.id, cantidad: 1 }]));
+			card.innerHTML = `<h3>${p.nombre}</h3><p>${p.descripcion || ''}</p><p><strong>${formatCRC(p.precio)}</strong></p><p>Stock: ${p.stock}</p><button data-id="${p.id}">Reservar</button>`;
+			card.querySelector('button').addEventListener('click', () => {
+				alert('Producto se retira y paga en tienda');
+				// Aquí podrías agregar lógica para una reserva real en el futuro
+			});
 			cont.appendChild(card);
 		});
 	} catch (err) {

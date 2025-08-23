@@ -16,7 +16,7 @@
 	<main>
 		<section class="tienda">
 			<h2>Tienda de Accesorios y Alimentos</h2>
-			<p>Encuentra todo lo que necesitas para tu mascota.</p>
+			<p>Encuentra todo lo que necesitas para tu mascota. ¡Reserva y retira en nuestra veterinaria!</p>
 
 			<!-- Producto 1 -->
 			<div class="producto-card">
@@ -26,7 +26,7 @@
 					<p>Collar resistente y ajustable.</p>
 					<p class="precio">₡6 900</p>
 					<p class="stock">Stock: 24</p>
-					<button class="btn-comprar">Comprar</button>
+					<button class="btn-comprar">Reservar</button>
 				</div>
 			</div>
 
@@ -38,7 +38,7 @@
 					<p>Alimento balanceado de alta calidad.</p>
 					<p class="precio">₡28 500</p>
 					<p class="stock">Stock: 15</p>
-					<button class="btn-comprar">Comprar</button>
+					<button class="btn-comprar">Reservar</button>
 				</div>
 			</div>
 
@@ -50,7 +50,7 @@
 					<p>Ideal para el entretenimiento de tu mascota.</p>
 					<p class="precio">₡12 000</p>
 					<p class="stock">Stock: 8</p>
-					<button class="btn-comprar">Comprar</button>
+					<button class="btn-comprar">Reservar</button>
 				</div>
 			</div>
 
@@ -62,7 +62,7 @@
 					<p>Cómoda cama acolchada para tu perro o gato.</p>
 					<p class="precio">₡18 500</p>
 					<p class="stock">Stock: 12</p>
-					<button class="btn-comprar">Comprar</button>
+					<button class="btn-comprar">Reservar</button>
 				</div>
 			</div>
 
@@ -74,7 +74,7 @@
 					<p>Shampoo suave y dermatológicamente probado.</p>
 					<p class="precio">₡5 500</p>
 					<p class="stock">Stock: 30</p>
-					<button class="btn-comprar">Comprar</button>
+					<button class="btn-comprar">Reservar</button>
 				</div>
 			</div>
 
