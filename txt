@@ -1,3 +1,4 @@
 -- Usuario admin por defecto:
 -- Email: admin@vetagenda.com
 -- Contraseña: Admin123!
+

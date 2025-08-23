@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Panel Administrativo - VetAgenda</title>
+	<link rel="stylesheet" href="css/estilos.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+	<header>
+		<h1>Panel Admin - VetAgenda</h1>
+		<div id="user-status"></div>
+		<nav aria-label="Principal">
+			<ul>
+				<li><a href="index.html">Inicio</a></li>
+				<li id="nav-auth"><a href="login.html">Iniciar Sesión/Registrarse</a></li>
+				<li><a href="reservas.html">Reservar Cita</a></li>
+				<li><a href="tienda.html">Tienda</a></li>
+				<li><a href="info-clinica.html">Info Clínica</a></li>
+				<li id="nav-admin" style="display:none"><a href="admin.html">Panel Admin</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<section>
+			<h2>Estadísticas</h2>
+			<div id="stats"></div>
+		</section>
+		<!-- Filtro de citas -->
+		<section>
+			<h2>Gestión de Citas</h2>
+			<div style="margin-bottom:10px">
+				<label for="filtro-estado">Estado:</label>
+				<select id="filtro-estado">
+					<option value="">Todas</option>
+					<option value="pendiente">Pendientes</option>
+					<option value="confirmada">Confirmadas</option>
+					<option value="cancelada">Canceladas</option>
+				</select>
+				<button id="btn-refrescar" class="btn">Refrescar</button>
+			</div>
+			<!-- Tabla con información de las citas -->
+			<div class="tabla-citas">
+				<table id="tabla-citas" border="1" width="100%" cellspacing="0" cellpadding="6">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Fecha/Hora</th>
+							<th>Mascota</th>
+							<th>Motivo</th>
+							<th>Estado</th>
+							<th>Usuario</th>
+							<th>Email</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+			</div>
+		</section>
+		<section>
+			<h2>Ventas (Control de inventario)</h2>
+			<div class="tabla-ventas">
+				<table id="tabla-ventas" border="1" width="100%" cellspacing="0" cellpadding="6">
+					<thead>
+						<tr>
+							<th>Pedido</th>
+							<th>Producto</th>
+							<th>Cantidad</th>
+							<th>Precio Unitario</th>
+							<th>Subtotal</th>
+							<th>Fecha</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+			</div>
+		</section>
+		<section>
+			<h2>Productos (CRUD)</h2>
+			<div style="margin-bottom:10px">
+				<button id="btn-nuevo" class="btn">Nuevo producto</button>
+			</div>
+			<div class="tabla-productos">
+				<table id="tabla-productos" border="1" width="100%" cellspacing="0" cellpadding="6">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Nombre</th>
+							<th>Descripción</th>
+							<th>Precio</th>
+							<th>Stock</th>
+							<th>Activo</th>
+							<th>Acciones</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+			</div>
+		</section>
+	</main>
+	<footer>
+		<p>&copy; 2025 VetAgenda. Todos los derechos reservados.</p>
+	</footer>
+	<script src="js/app.js"></script>
+	<script>
+	(async function cargarStats(){
+		const cont = document.querySelector('#stats');
+		try {
+			const d = await (await fetch('api/reportes/estadisticas.php', { credentials: 'include' })).json();
+			if (!d.ok) throw new Error(d.error||'Error');
+			cont.innerHTML = `<p>Total citas: ${d.citas.total}</p><p>Citas pendientes: ${d.citas.pendientes}</p><p>Citas confirmadas: ${d.citas.confirmadas}</p><p>Citas canceladas: ${d.citas.canceladas}</p><p>Pedidos: ${d.ventas.pedidos}</p><p>Total ventas: ₡${Number(d.ventas.total_ventas).toFixed(0)}</p>`;
+		} catch(e){ cont.textContent = 'No se pudieron cargar las estadísticas.' }
+	})();
+
+	async function cargarCitas(){
+		const estado = document.querySelector('#filtro-estado').value;
+		const url = 'api/citas/list.php?all=1' + (estado?('&status='+encodeURIComponent(estado)):'');
+		const tbody = document.querySelector('#tabla-citas tbody');
+		tbody.innerHTML = '<tr><td colspan="7">Cargando...</td></tr>';
+		try {
+			const r = await (await fetch(url, { credentials: 'include' })).json();
+			if (!r.ok) throw new Error(r.error||'Error');
+			tbody.innerHTML = '';
+			if (!r.citas.length) { tbody.innerHTML = '<tr><td colspan="7">Sin resultados</td></tr>'; return; }
+			r.citas.forEach(c => {
+				const tr = document.createElement('tr');
+				tr.innerHTML = `<td>${c.id}</td><td>${c.fecha_hora}</td><td>${c.nombre_mascota}</td><td>${c.motivo||''}</td><td>${c.estado}</td><td>${c.usuario||''}</td><td>${c.email||''}</td>`;
+				tbody.appendChild(tr);
+			});
+		} catch(e){ tbody.innerHTML = '<tr><td colspan="7">Error al cargar</td></tr>'; }
+	}
+	cargarCitas();
+	document.querySelector('#btn-refrescar').addEventListener('click', cargarCitas);
+	document.querySelector('#filtro-estado').addEventListener('change', cargarCitas);
+
+	async function cargarVentas(){
+		const tbody = document.querySelector('#tabla-ventas tbody');
+		tbody.innerHTML = '<tr><td colspan="6">Cargando...</td></tr>';
+		try {
+			const r = await (await fetch('api/reportes/ventas_items.php', { credentials: 'include' })).json();
+			if (!r.ok) throw new Error(r.error||'Error');
+			tbody.innerHTML = '';
+			if (!r.items.length) { tbody.innerHTML = '<tr><td colspan="6">Sin resultados</td></tr>'; return; }
+			r.items.forEach(it => {
+				const subtotal = Number(it.cantidad) * Number(it.precio_unitario);
+				const tr = document.createElement('tr');
+				tr.innerHTML = `<td>#${it.pedido_id}</td><td>${it.producto}</td><td>${it.cantidad}</td><td>₡${Number(it.precio_unitario).toFixed(0)}</td><td>₡${subtotal.toFixed(0)}</td><td>${it.creado_en}</td>`;
+				tbody.appendChild(tr);
+			});
+		} catch (e) { tbody.innerHTML = '<tr><td colspan="6">Error al cargar</td></tr>'; }
+	}
+	cargarVentas();
+
+	async function cargarProductos(){
+		const tbody = document.querySelector('#tabla-productos tbody');
+		tbody.innerHTML = '<tr><td colspan="7">Cargando...</td></tr>';
+		try {
+			const r = await (await fetch('api/productos/list.php?all=1', { credentials: 'include' })).json();
+			if (!r.ok) throw new Error(r.error||'Error');
+			tbody.innerHTML = '';
+			if (!r.productos.length) { tbody.innerHTML = '<tr><td colspan="7">Sin productos</td></tr>'; return; }
+			r.productos.forEach(p => {
+				const tr = document.createElement('tr');
+				tr.innerHTML = `
+					<td>${p.id}</td>
+					<td><input value="${p.nombre}"></td>
+					<td><input value="${p.descripcion||''}"></td>
+					<td><input type="number" step="100" min="0" value="${Number(p.precio).toFixed(0)}"></td>
+					<td><input type="number" min="0" value="${p.stock}"></td>
+					<td><input type="checkbox" ${p.activo? 'checked':''}></td>
+					<td>
+						<button class="btn btn-guardar">Guardar</button>
+						<button class="btn btn-eliminar">Eliminar</button>
+					</td>
+				`;
+				// Guardar/Eliminar
+				tr.querySelector('.btn-guardar').addEventListener('click', async ()=>{
+					const [id, nombre, descripcion, precio, stock, activo] = [
+						p.id,
+						tr.children[1].querySelector('input').value.trim(),
+						tr.children[2].querySelector('input').value.trim(),
+						parseFloat(tr.children[3].querySelector('input').value||'0'),
+						parseInt(tr.children[4].querySelector('input').value||'0', 10),
+						tr.children[5].querySelector('input').checked ? 1 : 0,
+					];
+					try {
+						const res = await fetch('api/productos/upsert.php', { method:'POST', credentials:'include', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ id, nombre, descripcion, precio, stock, activo }) });
+						const j = await res.json();
+						if (!j.ok) throw new Error(j.error||'Error');
+						alert('Producto guardado');
+						cargarProductos();
+					} catch(e){ alert('Error: ' + e.message); }
+				});
+				tr.querySelector('.btn-eliminar').addEventListener('click', async ()=>{
+					if (!confirm('¿Eliminar producto #' + p.id + '?')) return;
+					try {
+						const res = await fetch('api/productos/delete.php', { method:'POST', credentials:'include', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ id: p.id }) });
+						const j = await res.json();
+						if (!j.ok) throw new Error(j.error||'Error');
+						cargarProductos();
+					} catch(e){ alert('Error: ' + e.message); }
+				});
+				tbody.appendChild(tr);
+			});
+		} catch(e){ tbody.innerHTML = '<tr><td colspan="7">Error al cargar</td></tr>'; }
+	}
+	cargarProductos();
+
+	document.querySelector('#btn-nuevo').addEventListener('click', async ()=>{
+		const nombre = prompt('Nombre del producto:'); if (!nombre) return;
+		const descripcion = prompt('Descripción:') || '';
+		const precio = parseFloat(prompt('Precio (CRC):')||'0');
+		const stock = parseInt(prompt('Stock:' )||'0', 10);
+		try {
+			const res = await fetch('api/productos/upsert.php', { method:'POST', credentials:'include', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ nombre, descripcion, precio, stock, activo: 1 }) });
+			const j = await res.json();
+			if (!j.ok) throw new Error(j.error||'Error');
+			cargarProductos();
+		} catch(e){ alert('Error: ' + e.message); }
+	});
+	</script>
+</body>
+</html> 

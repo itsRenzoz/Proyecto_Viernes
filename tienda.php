@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Gestión de Citas Veterinarias - Tienda</title>
+	<link rel="stylesheet" href="css/estilos.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+	<?php include 'partials/header.html'; ?>
+
+	<main>
+		<section class="tienda">
+			<h2>Tienda de Accesorios y Alimentos</h2>
+			<p>Encuentra todo lo que necesitas para tu mascota.</p>
+
+			<!-- Producto 1 -->
+			<div class="producto-card">
+				<img src="img/collar.png" alt="Collar para perro">
+				<div class="producto-info">
+					<h3>Collar para perro</h3>
+					<p>Collar resistente y ajustable.</p>
+					<p class="precio">₡6 900</p>
+					<p class="stock">Stock: 24</p>
+					<button class="btn-comprar">Comprar</button>
+				</div>
+			</div>
+
+			<!-- Producto 2 -->
+			<div class="producto-card">
+				<img src="img/alimento.png" alt="Alimento Premium 10kg">
+				<div class="producto-info">
+					<h3>Alimento Premium 10kg</h3>
+					<p>Alimento balanceado de alta calidad.</p>
+					<p class="precio">₡28 500</p>
+					<p class="stock">Stock: 15</p>
+					<button class="btn-comprar">Comprar</button>
+				</div>
+			</div>
+
+			<!-- Producto 3 -->
+			<div class="producto-card">
+				<img src="img/juguete.png" alt="Juguete interactivo">
+				<div class="producto-info">
+					<h3>Juguete interactivo</h3>
+					<p>Ideal para el entretenimiento de tu mascota.</p>
+					<p class="precio">₡12 000</p>
+					<p class="stock">Stock: 8</p>
+					<button class="btn-comprar">Comprar</button>
+				</div>
+			</div>
+
+			<!-- Producto 4 -->
+			<div class="producto-card">
+				<img src="img/cama.png" alt="Cama para mascota">
+				<div class="producto-info">
+					<h3>Cama para mascota</h3>
+					<p>Cómoda cama acolchada para tu perro o gato.</p>
+					<p class="precio">₡18 500</p>
+					<p class="stock">Stock: 12</p>
+					<button class="btn-comprar">Comprar</button>
+				</div>
+			</div>
+
+			<!-- Producto 5 -->
+			<div class="producto-card">
+				<img src="img/shampoo.png" alt="Shampoo para mascotas">
+				<div class="producto-info">
+					<h3>Shampoo para mascotas</h3>
+					<p>Shampoo suave y dermatológicamente probado.</p>
+					<p class="precio">₡5 500</p>
+					<p class="stock">Stock: 30</p>
+					<button class="btn-comprar">Comprar</button>
+				</div>
+			</div>
+
+		</section>
+	</main>
+
+	<footer>
+		<p>&copy; 2025 VetAgenda. Todos los derechos reservados.</p>
+	</footer>
+
+	<script src="js/app.js"></script>
+</body>
+</html>

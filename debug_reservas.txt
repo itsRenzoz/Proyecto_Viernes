@@ -1,0 +1,2 @@
+RESERVAS PAGE LOAD: 2025-08-23 01:21:19 Session user data: {"id":1,"name":"Aaron","email":"aaron@hotmail.com","role":"cliente"}
+RESERVAS PAGE LOAD: 2025-08-23 01:21:46 Session user data: {"id":4,"name":"juan","email":"juan@hotmail.com","role":"cliente"}

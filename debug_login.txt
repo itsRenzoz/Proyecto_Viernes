@@ -1,0 +1,1 @@
+LOGIN SUCESSO: 2025-08-23 01:21:18 Session user data: {"id":1,"name":"Aaron","email":"aaron@hotmail.com","role":"cliente"}

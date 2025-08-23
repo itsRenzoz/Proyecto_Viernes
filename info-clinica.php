@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Gestión de Citas Veterinaria - Sobre la Clínica</title>
+	<link rel="stylesheet" href="css/estilos.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+	<?php include 'partials/header.html'; ?>
+
+	<main>
+		<h2>Sobre Nuestra Clínica</h2>
+		<p class="subtitulo">Información sobre la clínica veterinaria, horarios y servicios.</p>
+
+		<div class="cards-container">
+			
+			<div class="card">
+				<i class="fa-solid fa-stethoscope"></i>
+				<h3>Servicios</h3>
+				<ul>
+					<li>Consultas generales</li>
+					<li>Vacunación</li>
+					<li>Esterilización / Castración</li>
+					<li>Cirugías de tejidos blandos</li>
+					<li>Odontología veterinaria</li>
+					<li>Desparasitación</li>
+					<li>Laboratorio clínico</li>
+					<li>Radiografías</li>
+					<li>Hospitalización</li>
+					<li>Emergencias</li>
+				</ul>
+			</div>
+
+			<div class="card">
+				<i class="fa-regular fa-clock"></i>
+				<h3>Horario</h3>
+				<ul>
+					<li>Lunes a Viernes</li>
+					<li>8:00 AM - 6:00 PM</li>
+					<li>Sábados (previa cita)</li>
+				</ul>
+			</div>
+
+			<div class="card">
+				<i class="fa-solid fa-phone"></i>
+				<h3>Contacto</h3>
+				<ul>
+					<li><strong>Teléfono:</strong> +506 1234-5678</li>
+					<li><strong>Dirección:</strong> San José, Costa Rica</li>
+					<li><strong>Correo:</strong>contacto@vetagenda.com</li>
+				</ul>
+			</div>
+
+		</div>
+	</main>
+
+	<footer>
+		<p>&copy; 2025 VetAgenda. Todos los derechos reservados.</p>
+	</footer>
+
+	<script src="js/app.js"></script>
+</body>
+</html>
